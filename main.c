@@ -1,87 +1,85 @@
-// #include <stdio.h>
-
-// typedef long double ld;
-
-// ld add(ld x, ld y)
-// {
-// 	return x + y;
-// };
-
-// ld substract(ld x, ld y)
-// {
-// 	return x - y;
-// };
-
-// ld multiply(ld x, ld y)
-// {
-// 	return x * y;
-// };
-
-// ld divide(ld x, ld y)
-// {
-// 	return x / y;
-// };
-
-// int main()
-// {
-// 	ld x, y;
-
-// 	printf("Enter two numbers : (space separated)\n ");
-
-// 	scanf("%Lf %Lf", &x, &y);
-
-// 	printf("%.3Lf + %.3Lf = %.3Lf\n", x, y, add(x, y));
-// 	printf("%.3Lf - %.3Lf = %.3Lf\n", x, y, substract(x, y));
-// 	printf("%.3Lf * %.3Lf = %.3Lf\n", x, y, multiply(x, y));
-// 	printf("%.3Lf / %.3Lf = %.3Lf\n", x, y, divide(x, y));
-
-// 	return 0;
-// }
-
-// Start -->
-
 #include <stdio.h>
-
-int add(int a, int b)
-{
-	return a + b;
-}
-
-int sub(int a, int b)
-{
-	return a - b;
-}
-
-int multi(int a, int b)
-{
-	return a * b;
-}
-
-int divide(int a, int b)
-{
-	return a / b;
-}
 
 int main()
 {
 
-	int x, y;
+	int n;
 
-	printf("Enter two numbers : \n");
+	scanf("%d", &n);
 
-	scanf("%d %d", &x, &y);
+	if (n < 3)
+	{
+		printf("Error : Value can't be less than 3\n");
+		return 0;
+	}
 
-	printf("%d + %d = %d\n", x, y, add(x, y));
-	printf("%d - %d = %d\n", x, y, sub(x, y));
-	printf("%d * %d = %d\n", x, y, multi(x, y));
-	printf("%d / %d = %d\n", x, y, divide(x, y));
+	int num_of_lines = 2 * (n - 2) + 1;
+	int middle = (num_of_lines + 1) / 2;
+	int CharPerLine = num_of_lines + 1;
 
-	char c1, c2, c3, c4, c5,c6;
+	for (int i = 1; i <= num_of_lines; i++)
+	{
+		if (i == middle)
+		{
+			int spaceCount = (CharPerLine - 2) / 2;
+			for (int j = 0; j <= spaceCount; j++)
+			{
+				printf(" ");
+			}
 
-	printf("Enter your name:(max 5 chars)\n");
-	scanf("%c%c%c%c%c%c", &c1, &c2, &c3, &c4, &c5,&c6);
+			printf("@\n");
+			continue;
+		}
 
-	printf("Hello %c%c%c%c%c%c!\n", c1, c2, c3, c4, c5,c6);
+		int starDashCount = (CharPerLine - 2) / 2;
+
+		if (i % 2 != 0)
+		{
+			for (int j = 0; j < starDashCount; j++)
+			{
+				printf("*");
+			}
+
+			if (i < middle)
+			{
+				printf("\\ /");
+			}
+			else
+			{
+				printf("/ \\");
+			}
+
+			for (int j = 0; j < starDashCount; j++)
+			{
+				printf("*");
+			}
+			printf("\n");
+		}
+		else
+		{
+
+			for (int j = 0; j < starDashCount; j++)
+			{
+				printf("_");
+			}
+
+			if (i < middle)
+			{
+				printf("\\ /");
+			}
+			else
+			{
+				printf("/ \\");
+			}
+
+			for (int j = 0; j < starDashCount; j++)
+			{
+				printf("_");
+			}
+
+			printf("\n");
+		}
+	}
 
 	return 0;
 }
